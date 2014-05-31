@@ -1,5 +1,5 @@
 //
-//  GLViewController.h
+//  GLTweetTableViewCell.h
 //  GLTwitterSearch
 //
 //  Created by Gregory Lee on 5/31/14.
@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GLViewController : UIViewController
+@interface GLTweetTableViewCell : UITableViewCell
 
 @end
-

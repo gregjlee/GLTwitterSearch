@@ -7,18 +7,31 @@
 //
 
 #import "GLViewController.h"
-
+#import "GLTwitterApiClient.h"
 @interface GLViewController ()
 
 @end
 
 @implementation GLViewController
+- (id)init
+{
+    self = [super init];
+    if (self) {
+    }
+    return self;
+}
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[GLTwitterApiClient sharedClient] fetchTweetsForString:@"xmen"];
+
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {

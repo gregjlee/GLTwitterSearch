@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9556FB2115C94AF1BD1E6AAC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F249BA8AD6334613BD20C081 /* libPods.a */; };
 		C13B860B1939B8CA0034F34A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13B860A1939B8CA0034F34A /* Foundation.framework */; };
 		C13B860D1939B8CA0034F34A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13B860C1939B8CA0034F34A /* CoreGraphics.framework */; };
 		C13B860F1939B8CA0034F34A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13B860E1939B8CA0034F34A /* UIKit.framework */; };
@@ -21,6 +22,11 @@
 		C13B862C1939B8CB0034F34A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13B860E1939B8CA0034F34A /* UIKit.framework */; };
 		C13B86341939B8CB0034F34A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C13B86321939B8CB0034F34A /* InfoPlist.strings */; };
 		C13B86361939B8CB0034F34A /* GLTwitterSearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C13B86351939B8CB0034F34A /* GLTwitterSearchTests.m */; };
+		C13B86411939BB910034F34A /* GLAbstractTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C13B86401939BB910034F34A /* GLAbstractTableViewController.m */; };
+		C13B86431939BBE40034F34A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13B86421939BBE40034F34A /* Social.framework */; };
+		C13B86451939BBE90034F34A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13B86441939BBE90034F34A /* Accounts.framework */; };
+		C13B864A1939C22D0034F34A /* GLTweetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C13B86491939C22D0034F34A /* GLTweetTableViewCell.m */; };
+		C13B864D1939CB070034F34A /* GLTwitterApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C13B864C1939CB070034F34A /* GLTwitterApiClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A61B577EBB5F4086B0F75E58 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		C13B86071939B8CA0034F34A /* GLTwitterSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GLTwitterSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C13B860A1939B8CA0034F34A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C13B860C1939B8CA0034F34A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,6 +60,17 @@
 		C13B86311939B8CB0034F34A /* GLTwitterSearchTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GLTwitterSearchTests-Info.plist"; sourceTree = "<group>"; };
 		C13B86331939B8CB0034F34A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C13B86351939B8CB0034F34A /* GLTwitterSearchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLTwitterSearchTests.m; sourceTree = "<group>"; };
+		C13B863F1939BB910034F34A /* GLAbstractTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLAbstractTableViewController.h; sourceTree = "<group>"; };
+		C13B86401939BB910034F34A /* GLAbstractTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLAbstractTableViewController.m; sourceTree = "<group>"; };
+		C13B86421939BBE40034F34A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		C13B86441939BBE90034F34A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		C13B86461939C1EC0034F34A /* WSRLLListingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WSRLLListingTableViewCell.h; path = ../../wsrios/WestSideRentals/View/Landlord/ListingList/WSRLLListingTableViewCell.h; sourceTree = "<group>"; };
+		C13B86471939C1EC0034F34A /* WSRLLListingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WSRLLListingTableViewCell.m; path = ../../wsrios/WestSideRentals/View/Landlord/ListingList/WSRLLListingTableViewCell.m; sourceTree = "<group>"; };
+		C13B86481939C22D0034F34A /* GLTweetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTweetTableViewCell.h; sourceTree = "<group>"; };
+		C13B86491939C22D0034F34A /* GLTweetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTweetTableViewCell.m; sourceTree = "<group>"; };
+		C13B864B1939CB070034F34A /* GLTwitterApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTwitterApiClient.h; sourceTree = "<group>"; };
+		C13B864C1939CB070034F34A /* GLTwitterApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTwitterApiClient.m; sourceTree = "<group>"; };
+		F249BA8AD6334613BD20C081 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +78,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C13B86451939BBE90034F34A /* Accounts.framework in Frameworks */,
+				C13B86431939BBE40034F34A /* Social.framework in Frameworks */,
 				C13B860D1939B8CA0034F34A /* CoreGraphics.framework in Frameworks */,
 				C13B860F1939B8CA0034F34A /* UIKit.framework in Frameworks */,
 				C13B860B1939B8CA0034F34A /* Foundation.framework in Frameworks */,
+				9556FB2115C94AF1BD1E6AAC /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +107,7 @@
 				C13B862F1939B8CB0034F34A /* GLTwitterSearchTests */,
 				C13B86091939B8CA0034F34A /* Frameworks */,
 				C13B86081939B8CA0034F34A /* Products */,
+				A61B577EBB5F4086B0F75E58 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,10 +123,13 @@
 		C13B86091939B8CA0034F34A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C13B86441939BBE90034F34A /* Accounts.framework */,
+				C13B86421939BBE40034F34A /* Social.framework */,
 				C13B860A1939B8CA0034F34A /* Foundation.framework */,
 				C13B860C1939B8CA0034F34A /* CoreGraphics.framework */,
 				C13B860E1939B8CA0034F34A /* UIKit.framework */,
 				C13B86291939B8CB0034F34A /* XCTest.framework */,
+				F249BA8AD6334613BD20C081 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -114,7 +139,15 @@
 			children = (
 				C13B86191939B8CA0034F34A /* GLAppDelegate.h */,
 				C13B861A1939B8CA0034F34A /* GLAppDelegate.m */,
+				C13B864B1939CB070034F34A /* GLTwitterApiClient.h */,
+				C13B864C1939CB070034F34A /* GLTwitterApiClient.m */,
 				C13B861C1939B8CA0034F34A /* Main.storyboard */,
+				C13B86461939C1EC0034F34A /* WSRLLListingTableViewCell.h */,
+				C13B86471939C1EC0034F34A /* WSRLLListingTableViewCell.m */,
+				C13B86481939C22D0034F34A /* GLTweetTableViewCell.h */,
+				C13B86491939C22D0034F34A /* GLTweetTableViewCell.m */,
+				C13B863F1939BB910034F34A /* GLAbstractTableViewController.h */,
+				C13B86401939BB910034F34A /* GLAbstractTableViewController.m */,
 				C13B861F1939B8CA0034F34A /* GLViewController.h */,
 				C13B86201939B8CA0034F34A /* GLViewController.m */,
 				C13B86221939B8CA0034F34A /* Images.xcassets */,
@@ -159,9 +192,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C13B86391939B8CB0034F34A /* Build configuration list for PBXNativeTarget "GLTwitterSearch" */;
 			buildPhases = (
+				3B4D3A40E58049518D3B4169 /* Check Pods Manifest.lock */,
 				C13B86031939B8CA0034F34A /* Sources */,
 				C13B86041939B8CA0034F34A /* Frameworks */,
 				C13B86051939B8CA0034F34A /* Resources */,
+				38EDC0F1BD874B49B48CC17A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -245,11 +280,47 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		38EDC0F1BD874B49B48CC17A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3B4D3A40E58049518D3B4169 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C13B86031939B8CA0034F34A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C13B86411939BB910034F34A /* GLAbstractTableViewController.m in Sources */,
+				C13B864A1939C22D0034F34A /* GLTweetTableViewCell.m in Sources */,
+				C13B864D1939CB070034F34A /* GLTwitterApiClient.m in Sources */,
 				C13B86171939B8CA0034F34A /* main.m in Sources */,
 				C13B86211939B8CA0034F34A /* GLViewController.m in Sources */,
 				C13B861B1939B8CA0034F34A /* GLAppDelegate.m in Sources */,
@@ -374,6 +445,7 @@
 		};
 		C13B863A1939B8CB0034F34A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A61B577EBB5F4086B0F75E58 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -387,6 +459,7 @@
 		};
 		C13B863B1939B8CB0034F34A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A61B577EBB5F4086B0F75E58 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -457,6 +530,7 @@
 				C13B863B1939B8CB0034F34A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C13B863C1939B8CB0034F34A /* Build configuration list for PBXNativeTarget "GLTwitterSearchTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +539,7 @@
 				C13B863E1939B8CB0034F34A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,12 +7,17 @@
 //
 
 #import "GLAppDelegate.h"
-
+#import "GLViewController.h"
 @implementation GLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    CGRect screen=[UIScreen mainScreen].bounds;
+    self.window = [[UIWindow alloc] initWithFrame:screen];
+
+    self.window.rootViewController=[GLViewController new];
+    
+    [self.window makeKeyAndVisible];
     return YES;
 }
 							
