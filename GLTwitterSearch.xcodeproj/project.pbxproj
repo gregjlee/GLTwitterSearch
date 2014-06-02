@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		C1F781ED193C396F00A985C4 /* Mogenerator */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = C1F781EE193C396F00A985C4 /* Build configuration list for PBXAggregateTarget "Mogenerator" */;
+			buildPhases = (
+				C1F781F1193C39BB00A985C4 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Mogenerator;
+			productName = Mogenerator;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		9556FB2115C94AF1BD1E6AAC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F249BA8AD6334613BD20C081 /* libPods.a */; };
 		C13B860B1939B8CA0034F34A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13B860A1939B8CA0034F34A /* Foundation.framework */; };
@@ -15,18 +29,23 @@
 		C13B86171939B8CA0034F34A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C13B86161939B8CA0034F34A /* main.m */; };
 		C13B861B1939B8CA0034F34A /* GLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C13B861A1939B8CA0034F34A /* GLAppDelegate.m */; };
 		C13B861E1939B8CA0034F34A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C13B861C1939B8CA0034F34A /* Main.storyboard */; };
-		C13B86211939B8CA0034F34A /* GLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C13B86201939B8CA0034F34A /* GLViewController.m */; };
 		C13B86231939B8CA0034F34A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C13B86221939B8CA0034F34A /* Images.xcassets */; };
 		C13B862A1939B8CB0034F34A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13B86291939B8CB0034F34A /* XCTest.framework */; };
 		C13B862B1939B8CB0034F34A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13B860A1939B8CA0034F34A /* Foundation.framework */; };
 		C13B862C1939B8CB0034F34A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13B860E1939B8CA0034F34A /* UIKit.framework */; };
 		C13B86341939B8CB0034F34A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C13B86321939B8CB0034F34A /* InfoPlist.strings */; };
 		C13B86361939B8CB0034F34A /* GLTwitterSearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C13B86351939B8CB0034F34A /* GLTwitterSearchTests.m */; };
-		C13B86411939BB910034F34A /* GLAbstractTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C13B86401939BB910034F34A /* GLAbstractTableViewController.m */; };
 		C13B86431939BBE40034F34A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13B86421939BBE40034F34A /* Social.framework */; };
 		C13B86451939BBE90034F34A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13B86441939BBE90034F34A /* Accounts.framework */; };
-		C13B864A1939C22D0034F34A /* GLTweetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C13B86491939C22D0034F34A /* GLTweetTableViewCell.m */; };
-		C13B864D1939CB070034F34A /* GLTwitterApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C13B864C1939CB070034F34A /* GLTwitterApiClient.m */; };
+		C1F781E8193C378E00A985C4 /* GLTweetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F781DB193C378E00A985C4 /* GLTweetTableViewCell.m */; };
+		C1F781E9193C378E00A985C4 /* GLAbstractTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F781DE193C378E00A985C4 /* GLAbstractTableViewController.m */; };
+		C1F781EA193C378E00A985C4 /* GLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F781E0193C378E00A985C4 /* GLViewController.m */; };
+		C1F781EB193C378E00A985C4 /* GLTwitterApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F781E3193C378E00A985C4 /* GLTwitterApiClient.m */; };
+		C1F781EC193C378E00A985C4 /* GLTwitterSearch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1F781E6193C378E00A985C4 /* GLTwitterSearch.xcdatamodeld */; };
+		C1F781F6193C3A7E00A985C4 /* _Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F781F3193C3A7E00A985C4 /* _Tweet.m */; };
+		C1F781F7193C3A7E00A985C4 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F781F5193C3A7E00A985C4 /* Tweet.m */; };
+		C1F781FC193C3D5C00A985C4 /* GLSearchTweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F781FB193C3D5C00A985C4 /* GLSearchTweetsViewController.m */; };
+		C1F781FF193C3D7D00A985C4 /* GLSavedTweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F781FE193C3D7D00A985C4 /* GLSavedTweetsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,24 +71,35 @@
 		C13B86191939B8CA0034F34A /* GLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLAppDelegate.h; sourceTree = "<group>"; };
 		C13B861A1939B8CA0034F34A /* GLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLAppDelegate.m; sourceTree = "<group>"; };
 		C13B861D1939B8CA0034F34A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C13B861F1939B8CA0034F34A /* GLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLViewController.h; sourceTree = "<group>"; };
-		C13B86201939B8CA0034F34A /* GLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLViewController.m; sourceTree = "<group>"; };
 		C13B86221939B8CA0034F34A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C13B86281939B8CB0034F34A /* GLTwitterSearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GLTwitterSearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C13B86291939B8CB0034F34A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C13B86311939B8CB0034F34A /* GLTwitterSearchTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GLTwitterSearchTests-Info.plist"; sourceTree = "<group>"; };
 		C13B86331939B8CB0034F34A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C13B86351939B8CB0034F34A /* GLTwitterSearchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLTwitterSearchTests.m; sourceTree = "<group>"; };
-		C13B863F1939BB910034F34A /* GLAbstractTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLAbstractTableViewController.h; sourceTree = "<group>"; };
-		C13B86401939BB910034F34A /* GLAbstractTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLAbstractTableViewController.m; sourceTree = "<group>"; };
 		C13B86421939BBE40034F34A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		C13B86441939BBE90034F34A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		C13B86461939C1EC0034F34A /* WSRLLListingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WSRLLListingTableViewCell.h; path = ../../wsrios/WestSideRentals/View/Landlord/ListingList/WSRLLListingTableViewCell.h; sourceTree = "<group>"; };
 		C13B86471939C1EC0034F34A /* WSRLLListingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WSRLLListingTableViewCell.m; path = ../../wsrios/WestSideRentals/View/Landlord/ListingList/WSRLLListingTableViewCell.m; sourceTree = "<group>"; };
-		C13B86481939C22D0034F34A /* GLTweetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTweetTableViewCell.h; sourceTree = "<group>"; };
-		C13B86491939C22D0034F34A /* GLTweetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTweetTableViewCell.m; sourceTree = "<group>"; };
-		C13B864B1939CB070034F34A /* GLTwitterApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTwitterApiClient.h; sourceTree = "<group>"; };
-		C13B864C1939CB070034F34A /* GLTwitterApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTwitterApiClient.m; sourceTree = "<group>"; };
+		C1F781D5193C35E900A985C4 /* PPRAppDelegateAlt1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PPRAppDelegateAlt1.m; path = "../../../../Google Drive/books/CoredDataCode/Baseline/PPRecipes/PPRAppDelegateAlt1.m"; sourceTree = "<group>"; };
+		C1F781DA193C378E00A985C4 /* GLTweetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTweetTableViewCell.h; sourceTree = "<group>"; };
+		C1F781DB193C378E00A985C4 /* GLTweetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTweetTableViewCell.m; sourceTree = "<group>"; };
+		C1F781DD193C378E00A985C4 /* GLAbstractTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLAbstractTableViewController.h; sourceTree = "<group>"; };
+		C1F781DE193C378E00A985C4 /* GLAbstractTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLAbstractTableViewController.m; sourceTree = "<group>"; };
+		C1F781DF193C378E00A985C4 /* GLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLViewController.h; sourceTree = "<group>"; };
+		C1F781E0193C378E00A985C4 /* GLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLViewController.m; sourceTree = "<group>"; };
+		C1F781E2193C378E00A985C4 /* GLTwitterApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTwitterApiClient.h; sourceTree = "<group>"; };
+		C1F781E3193C378E00A985C4 /* GLTwitterApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTwitterApiClient.m; sourceTree = "<group>"; };
+		C1F781E7193C378E00A985C4 /* GLTwitterSearch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GLTwitterSearch.xcdatamodel; sourceTree = "<group>"; };
+		C1F781F2193C3A7E00A985C4 /* _Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Tweet.h; sourceTree = "<group>"; };
+		C1F781F3193C3A7E00A985C4 /* _Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Tweet.m; sourceTree = "<group>"; };
+		C1F781F4193C3A7E00A985C4 /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
+		C1F781F5193C3A7E00A985C4 /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
+		C1F781F9193C3B9B00A985C4 /* PPRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PPRAppDelegate.m; path = "../../../../Google Drive/books/CoredDataCode/Baseline/PPRecipes/PPRAppDelegate.m"; sourceTree = "<group>"; };
+		C1F781FA193C3D5C00A985C4 /* GLSearchTweetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSearchTweetsViewController.h; sourceTree = "<group>"; };
+		C1F781FB193C3D5C00A985C4 /* GLSearchTweetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLSearchTweetsViewController.m; sourceTree = "<group>"; };
+		C1F781FD193C3D7D00A985C4 /* GLSavedTweetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSavedTweetsViewController.h; sourceTree = "<group>"; };
+		C1F781FE193C3D7D00A985C4 /* GLSavedTweetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLSavedTweetsViewController.m; sourceTree = "<group>"; };
 		F249BA8AD6334613BD20C081 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -137,19 +167,18 @@
 		C13B86101939B8CA0034F34A /* GLTwitterSearch */ = {
 			isa = PBXGroup;
 			children = (
+				C1F781D9193C378E00A985C4 /* View */,
+				C1F781DC193C378E00A985C4 /* Controller */,
+				C1F781E1193C378E00A985C4 /* Singleton */,
+				C1F781E4193C378E00A985C4 /* Helpers */,
+				C1F781E5193C378E00A985C4 /* Model */,
+				C1F781D5193C35E900A985C4 /* PPRAppDelegateAlt1.m */,
+				C1F781F9193C3B9B00A985C4 /* PPRAppDelegate.m */,
 				C13B86191939B8CA0034F34A /* GLAppDelegate.h */,
 				C13B861A1939B8CA0034F34A /* GLAppDelegate.m */,
-				C13B864B1939CB070034F34A /* GLTwitterApiClient.h */,
-				C13B864C1939CB070034F34A /* GLTwitterApiClient.m */,
 				C13B861C1939B8CA0034F34A /* Main.storyboard */,
 				C13B86461939C1EC0034F34A /* WSRLLListingTableViewCell.h */,
 				C13B86471939C1EC0034F34A /* WSRLLListingTableViewCell.m */,
-				C13B86481939C22D0034F34A /* GLTweetTableViewCell.h */,
-				C13B86491939C22D0034F34A /* GLTweetTableViewCell.m */,
-				C13B863F1939BB910034F34A /* GLAbstractTableViewController.h */,
-				C13B86401939BB910034F34A /* GLAbstractTableViewController.m */,
-				C13B861F1939B8CA0034F34A /* GLViewController.h */,
-				C13B86201939B8CA0034F34A /* GLViewController.m */,
 				C13B86221939B8CA0034F34A /* Images.xcassets */,
 				C13B86111939B8CA0034F34A /* Supporting Files */,
 			);
@@ -183,6 +212,66 @@
 				C13B86321939B8CB0034F34A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C1F781D9193C378E00A985C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C1F781DA193C378E00A985C4 /* GLTweetTableViewCell.h */,
+				C1F781DB193C378E00A985C4 /* GLTweetTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C1F781DC193C378E00A985C4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C1F781DD193C378E00A985C4 /* GLAbstractTableViewController.h */,
+				C1F781DE193C378E00A985C4 /* GLAbstractTableViewController.m */,
+				C1F781DF193C378E00A985C4 /* GLViewController.h */,
+				C1F781E0193C378E00A985C4 /* GLViewController.m */,
+				C1F781FA193C3D5C00A985C4 /* GLSearchTweetsViewController.h */,
+				C1F781FB193C3D5C00A985C4 /* GLSearchTweetsViewController.m */,
+				C1F781FD193C3D7D00A985C4 /* GLSavedTweetsViewController.h */,
+				C1F781FE193C3D7D00A985C4 /* GLSavedTweetsViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C1F781E1193C378E00A985C4 /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				C1F781E2193C378E00A985C4 /* GLTwitterApiClient.h */,
+				C1F781E3193C378E00A985C4 /* GLTwitterApiClient.m */,
+			);
+			path = Singleton;
+			sourceTree = "<group>";
+		};
+		C1F781E4193C378E00A985C4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C1F781E5193C378E00A985C4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C1F781F8193C3A8600A985C4 /* Generated */,
+				C1F781F4193C3A7E00A985C4 /* Tweet.h */,
+				C1F781F5193C3A7E00A985C4 /* Tweet.m */,
+				C1F781E6193C378E00A985C4 /* GLTwitterSearch.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C1F781F8193C3A8600A985C4 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				C1F781F2193C3A7E00A985C4 /* _Tweet.h */,
+				C1F781F3193C3A7E00A985C4 /* _Tweet.m */,
+			);
+			name = Generated;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +344,7 @@
 			targets = (
 				C13B86061939B8CA0034F34A /* GLTwitterSearch */,
 				C13B86271939B8CB0034F34A /* GLTwitterSearchTests */,
+				C1F781ED193C396F00A985C4 /* Mogenerator */,
 			);
 		};
 /* End PBXProject section */
@@ -311,6 +401,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		C1F781F1193C39BB00A985C4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd GLTwitterSearch/Model\n/usr/bin/mogenerator  --template-var arc=true -m GLTwitterSearch.xcdatamodeld/GLTwitterSearch.xcdatamodel";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -318,11 +421,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C13B86411939BB910034F34A /* GLAbstractTableViewController.m in Sources */,
-				C13B864A1939C22D0034F34A /* GLTweetTableViewCell.m in Sources */,
-				C13B864D1939CB070034F34A /* GLTwitterApiClient.m in Sources */,
+				C1F781F7193C3A7E00A985C4 /* Tweet.m in Sources */,
+				C1F781EC193C378E00A985C4 /* GLTwitterSearch.xcdatamodeld in Sources */,
+				C1F781FF193C3D7D00A985C4 /* GLSavedTweetsViewController.m in Sources */,
+				C1F781E9193C378E00A985C4 /* GLAbstractTableViewController.m in Sources */,
+				C1F781EA193C378E00A985C4 /* GLViewController.m in Sources */,
+				C1F781FC193C3D5C00A985C4 /* GLSearchTweetsViewController.m in Sources */,
+				C1F781F6193C3A7E00A985C4 /* _Tweet.m in Sources */,
+				C1F781EB193C378E00A985C4 /* GLTwitterApiClient.m in Sources */,
+				C1F781E8193C378E00A985C4 /* GLTweetTableViewCell.m in Sources */,
 				C13B86171939B8CA0034F34A /* main.m in Sources */,
-				C13B86211939B8CA0034F34A /* GLViewController.m in Sources */,
 				C13B861B1939B8CA0034F34A /* GLAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,6 +619,20 @@
 			};
 			name = Release;
 		};
+		C1F781EF193C396F00A985C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C1F781F0193C396F00A985C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -541,7 +663,28 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		C1F781EE193C396F00A985C4 /* Build configuration list for PBXAggregateTarget "Mogenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C1F781EF193C396F00A985C4 /* Debug */,
+				C1F781F0193C396F00A985C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C1F781E6193C378E00A985C4 /* GLTwitterSearch.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C1F781E7193C378E00A985C4 /* GLTwitterSearch.xcdatamodel */,
+			);
+			currentVersion = C1F781E7193C378E00A985C4 /* GLTwitterSearch.xcdatamodel */;
+			path = GLTwitterSearch.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C13B85FF1939B8CA0034F34A /* Project object */;
 }
