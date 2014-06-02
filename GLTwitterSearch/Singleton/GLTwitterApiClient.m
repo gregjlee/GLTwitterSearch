@@ -9,7 +9,6 @@
 #import "GLTwitterApiClient.h"
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
-#import "GLProcessTweetsOperation.h"
 @interface GLTwitterApiClient ()
 @property (nonatomic,strong) ACAccountStore *accountStore;
 @end
@@ -35,15 +34,21 @@
 }
 
 
-- (void)fetchTweetsForString:(NSString *)search
-{
+- (void)fetchTweetsForString:(NSString *)search success:(ResponseBlock)success fail:(CompletionBlock)fail{
+
     if (![self userHasAccessToTwitter]) {
         return;
     }
+    CompletionBlock failBlock=^{
+        if (fail) {
+            fail();
+        }
+    };
 
     ACAccountType *twitterAccountType =
     [self.accountStore accountTypeWithAccountTypeIdentifier:
      ACAccountTypeIdentifierTwitter];
+    
     
     [self.accountStore
      requestAccessToAccountsWithType:twitterAccountType
@@ -74,23 +79,13 @@
                       if (urlResponse.statusCode >= 200 &&
                           urlResponse.statusCode < 300) {
                           
-                          NSError *jsonError;
-                          NSDictionary *timelineData =
-                          [NSJSONSerialization
-                           JSONObjectWithData:responseData
-                           options:NSJSONReadingAllowFragments error:&jsonError];
-                          if (timelineData) {
-                              NSArray *tweets=timelineData[@"statuses"];
-                              for (NSDictionary *tweet in tweets) {
-                                  NSLog(@"tweet %@ %@",tweet[@"id"],tweet[@"text"]);
-                              }
+                          if (success) {
+                              success(responseData);
                           }
-                          else {
-                              // Our JSON deserialization went awry
-                              NSLog(@"JSON Error: %@", [jsonError localizedDescription]);
-                          }
+
                       }
                       else {
+                          failBlock();
                           // The server did not respond ... were we rate-limited?
                           NSLog(@"The response status code is %d",
                                 urlResponse.statusCode);
@@ -101,6 +96,7 @@
          else {
              // Access was not granted, or an error occurred
              NSLog(@"%@", [error localizedDescription]);
+             failBlock();
          }
      }];
 }

@@ -8,7 +8,8 @@
 
 #import "GLSearchTweetsViewController.h"
 #import "GLTwitterApiClient.h"
-@interface GLSearchTweetsViewController ()
+#import "GLProcessTweetsOperation.h"
+@interface GLSearchTweetsViewController ()<UIAlertViewDelegate>
 
 @end
 
@@ -19,13 +20,51 @@
 {
     [super viewDidLoad];
     self.title=@"Search";
+    UIBarButtonItem *searchItem=[[UIBarButtonItem alloc]initWithTitle:@"Search" style:UIBarButtonItemStylePlain target:self action:@selector(handleSearchTapped:)];
+    self.navigationItem.rightBarButtonItem=searchItem;
     // Do any additional setup after loading the view.
 }
 
--(void)handleSearchTweetsTapped:(id)sender{
-    NSString *search=@"xmen";
-    [GLTwitterApiClient sharedClient] fetchTweetsForString:<#(NSString *)#>
+-(void)fetchTweetsWithSearchText:(NSString *)searchText{
+    [[GLTwitterApiClient sharedClient] fetchTweetsForString:searchText success:^(id result) {
+        [self processTweetData:result];
+    } fail:^{
+        NSLog(@"fail search %@",searchText);
+    }];
 }
+
+-(void)processTweetData:(id)data{
+    GLProcessTweetsOperation *operation= [[GLProcessTweetsOperation alloc] initWithData:data context:self.context completion:^(BOOL success, NSError *error) {
+        
+    }];
+    [[NSOperationQueue mainQueue] addOperation:operation];
+
+}
+
+-(void)handleSearchTapped:(id)sender{
+    UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle:@"New Saved Search"
+                              message:@"Please enter a name for this search"
+                              delegate:self
+                              cancelButtonTitle:@"Cancel"
+                              otherButtonTitles:@"Save", nil];
+    [alertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    
+    [alertView show];
+
+}
+
+#pragma mark - alert delegate
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==0) {
+        return;
+    }
+    UITextField *textField=[alertView textFieldAtIndex:0];
+    NSString *searchText=textField.text;
+    //validate text
+    [self fetchTweetsWithSearchText:searchText];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

@@ -146,11 +146,14 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
     
-    return 1;
+    return self.fetchedResultsController.fetchedObjects.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return [self dequeueResuableCellWithClass:[GLTweetTableViewCell class]];
+    Tweet *tweet=self.fetchedResultsController.fetchedObjects[indexPath.row];
+    GLTweetTableViewCell *cell=(GLTweetTableViewCell *)[self dequeueResuableCellWithClass:[GLTweetTableViewCell class]];
+    cell.textLabel.text=tweet.text;
+    return cell;
 }
 
 

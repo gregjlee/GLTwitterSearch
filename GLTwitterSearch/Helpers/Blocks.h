@@ -8,8 +8,9 @@
 
 #ifndef GLTwitterSearch_Blocks_h
 #define GLTwitterSearch_Blocks_h
-
 typedef void (^ProcessBlock)(BOOL success, NSError *error);
+typedef void (^CompletionBlock)();
+typedef void (^ResponseBlock)(id result);
 typedef id (^TransformBlock)(id value);
 
 

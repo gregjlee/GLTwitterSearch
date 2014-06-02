@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Blocks.h"
 @interface GLTwitterApiClient : NSObject
 +(GLTwitterApiClient *)sharedClient;
-- (void)fetchTweetsForString:(NSString *)search;
+- (void)fetchTweetsForString:(NSString *)search success:(ResponseBlock)success fail:(CompletionBlock)fail;
 
 @end

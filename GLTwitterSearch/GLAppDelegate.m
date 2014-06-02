@@ -64,8 +64,11 @@
     }
     _tabBarController=[[UITabBarController alloc]init];
     GLSearchTweetsViewController *searchTweetsViewController=[[GLSearchTweetsViewController alloc]initWithContext:self.managedObjectContext];
+    UINavigationController *searchNav=[[UINavigationController alloc]initWithRootViewController:searchTweetsViewController];
+    
     GLSavedTweetsViewController *savedTweetsViewController= [[GLSavedTweetsViewController alloc]initWithContext:self.managedObjectContext];
-    _tabBarController.viewControllers=@[searchTweetsViewController,savedTweetsViewController];
+    UINavigationController *saveNav=[[UINavigationController alloc]initWithRootViewController:savedTweetsViewController];
+    _tabBarController.viewControllers=@[searchNav,saveNav];
     return _tabBarController;
     
 }

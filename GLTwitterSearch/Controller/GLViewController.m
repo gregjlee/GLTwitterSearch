@@ -25,7 +25,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[GLTwitterApiClient sharedClient] fetchTweetsForString:@"xmen"];
 
     
 	// Do any additional setup after loading the view, typically from a nib.

@@ -10,16 +10,16 @@
 
 @interface GLProcessTweetsOperation()
 @property (nonatomic, strong) NSData *incomingData;
-@property (nonatomic, copy) Proc completionBlock;
+@property (nonatomic, copy) ProcessBlock processCompletion;
 @property (nonatomic, weak) NSManagedObjectContext *mainContext;
 
 @end
 @implementation GLProcessTweetsOperation
-- (id)initWithData:(NSData*)data context:(NSManagedObjectContext *)context completion:(CompletionBlock)completion {
+- (id)initWithData:(NSData*)data context:(NSManagedObjectContext *)context completion:(ProcessBlock)completion {
     if (!(self = [super init])) return nil;
     _incomingData=data;
     _mainContext=context;
-    _completionBlock=completion;
+    _processCompletion=completion;
     return self;
 }
 
@@ -32,11 +32,12 @@
     [localContext setParentContext:self.mainContext];
     
     NSError *error = nil;
-    id tweetsJSON = [NSJSONSerialization JSONObjectWithData:[self incomingData]
-                                                  options:0
+    NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:self.incomingData
+                                                  options:NSJSONReadingAllowFragments
                                                     error:&error];
+    id tweetsJSON=jsonResponse[@"statuses"];
     if (!tweetsJSON && error) {
-        [self completionBlock](NO, error);
+        self.processCompletion(NO, error);
         return;
     }
     
@@ -53,12 +54,12 @@
     }
     
     
-    void(^saveBlock)() = ^ {
+    CompletionBlock saveBlock = ^ {
         NSError *error = nil;
         NSAssert([localContext save:&error], @"Error saving context: %@\n%@",
                  [error localizedDescription], [error userInfo]);
-        if (self.completionBlock) {
-            self.completionBlock(YES,nil);
+        if (self.processCompletion) {
+            self.processCompletion(YES,nil);
         }
     };
     
