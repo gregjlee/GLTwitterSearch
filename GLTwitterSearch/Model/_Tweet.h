@@ -6,6 +6,7 @@
 
 extern const struct TweetAttributes {
 	__unsafe_unretained NSString *createdAt;
+	__unsafe_unretained NSString *saved;
 	__unsafe_unretained NSString *text;
 	__unsafe_unretained NSString *tweetID;
 } TweetAttributes;
@@ -15,6 +16,7 @@ extern const struct TweetRelationships {
 
 extern const struct TweetFetchedProperties {
 } TweetFetchedProperties;
+
 
 
 
@@ -39,6 +41,20 @@ extern const struct TweetFetchedProperties {
 
 
 //- (BOOL)validateCreatedAt:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* saved;
+
+
+
+@property BOOL savedValue;
+- (BOOL)savedValue;
+- (void)setSavedValue:(BOOL)value_;
+
+//- (BOOL)validateSaved:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -80,6 +96,15 @@ extern const struct TweetFetchedProperties {
 
 - (NSDate*)primitiveCreatedAt;
 - (void)setPrimitiveCreatedAt:(NSDate*)value;
+
+
+
+
+- (NSNumber*)primitiveSaved;
+- (void)setPrimitiveSaved:(NSNumber*)value;
+
+- (BOOL)primitiveSavedValue;
+- (void)setPrimitiveSavedValue:(BOOL)value_;
 
 
 

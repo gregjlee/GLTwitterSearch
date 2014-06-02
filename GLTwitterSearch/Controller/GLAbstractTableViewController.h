@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "GLTweetTableViewCell.h"
 @interface GLAbstractTableViewController : UIViewController  <UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong)UITableView *tableView;
+@property (nonatomic,strong)NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic,strong)NSManagedObjectContext *context;
 -(UITableViewCell *)dequeueResuableCellWithClass:(Class)cellClass;
 
+-(id)initWithContext:(NSManagedObjectContext *)context;
 @end

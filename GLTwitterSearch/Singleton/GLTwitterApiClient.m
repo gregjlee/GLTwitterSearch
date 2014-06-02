@@ -9,6 +9,7 @@
 #import "GLTwitterApiClient.h"
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
+#import "GLProcessTweetsOperation.h"
 @interface GLTwitterApiClient ()
 @property (nonatomic,strong) ACAccountStore *accountStore;
 @end

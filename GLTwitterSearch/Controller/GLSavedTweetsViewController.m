@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title=@"Saved";
     // Do any additional setup after loading the view.
 }
 

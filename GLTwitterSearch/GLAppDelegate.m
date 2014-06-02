@@ -11,7 +11,7 @@
 #import "GLSavedTweetsViewController.h"
 @interface GLAppDelegate()
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, strong) NSManagedObjectCOntext *privateContext;
+@property (nonatomic, strong) NSManagedObjectContext *privateContext;
 @property (nonatomic, strong) UITabBarController *tabBarController;
 @end
 @implementation GLAppDelegate
@@ -22,11 +22,7 @@
     CGRect screen=[UIScreen mainScreen].bounds;
     self.window = [[UIWindow alloc] initWithFrame:screen];
 
-    
-    UITabBarController *tabBarController=[[UITabBarController alloc]init];
-    
-    tabBarController.viewControllers=@[[GLViewController new],[GLViewController new]];
-    self.window.rootViewController=[GLViewController new];
+    self.window.rootViewController=self.tabBarController;
     
     [self.window makeKeyAndVisible];
     return YES;
@@ -34,91 +30,111 @@
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
+    [self saveContext:NO];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+    [self saveContext:NO];
+
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
+    [self saveContext:NO];
+
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    [self saveContext:NO];
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    [self saveContext:NO];
+
 }
 
-#pragma mark - View Controllers
 
 -(UITabBarController *)tabBarController{
     if (_tabBarController) {
         return _tabBarController;
     }
+    _tabBarController=[[UITabBarController alloc]init];
+    GLSearchTweetsViewController *searchTweetsViewController=[[GLSearchTweetsViewController alloc]initWithContext:self.managedObjectContext];
+    GLSavedTweetsViewController *savedTweetsViewController= [[GLSavedTweetsViewController alloc]initWithContext:self.managedObjectContext];
+    _tabBarController.viewControllers=@[searchTweetsViewController,savedTweetsViewController];
+    return _tabBarController;
     
 }
+
+- (void)saveContext:(BOOL)wait
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    NSManagedObjectContext *private = [self privateContext];
+    
+    if (!moc) return;
+    if ([moc hasChanges]) {
+        [moc performBlockAndWait:^{
+            NSError *error = nil;
+            NSAssert([moc save:&error], @"Error saving MOC: %@\n%@",
+                    [error localizedDescription], [error userInfo]);
+        }];
+    }
+    
+    void (^savePrivate) (void) = ^{
+        NSError *error = nil;
+        NSAssert([private save:&error], @"Error saving private moc: %@\n%@",
+                [error localizedDescription], [error userInfo]);
+    };
+    
+    if ([private hasChanges]) {
+        if (wait) {
+            [private performBlockAndWait:savePrivate];
+        } else {
+            [private performBlock:savePrivate];
+        }
+    }
+}
+
+
 
 
 #pragma mark - Core Data stack
 
 - (void)initializeCoreDataStack
 {
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"PPRecipes" withExtension:@"momd"];
-    ZAssert(modelURL, @"Failed to find model URL");
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"GLTwitterSearch" withExtension:@"momd"];
+    NSAssert(modelURL, @"Failed to find model URL");
     
     NSManagedObjectModel *mom = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-    ZAssert(mom, @"Failed to initialize model");
+    NSAssert(mom, @"Failed to initialize model");
     
     NSPersistentStoreCoordinator *psc = nil;
     psc = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
-    ZAssert(psc, @"Failed to initialize persistent store coordinator");
+    NSAssert(psc, @"Failed to initialize persistent store coordinator");
     
-    NSManagedObjectContext *private = nil;
     NSUInteger type = NSPrivateQueueConcurrencyType;
-    private = [[NSManagedObjectContext alloc] initWithConcurrencyType:type];
-    [private setPersistentStoreCoordinator:psc];
+    self.privateContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:type];
+    self.privateContext.persistentStoreCoordinator=psc;
     
     type = NSMainQueueConcurrencyType;
-    NSManagedObjectContext *moc = nil;
-    moc = [[NSManagedObjectContext alloc] initWithConcurrencyType:type];
-    [moc setParentContext:private];
-    [self setPrivateContext:private];
+    self.managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:type];
+    self.managedObjectContext.parentContext=self.privateContext;
     
-    [self setManagedObjectContext:moc];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSURL *storeURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-        storeURL = [storeURL URLByAppendingPathComponent:@"PPRecipes.sqlite"];
+        storeURL = [storeURL URLByAppendingPathComponent:@"GLTwitterSearch.sqlite"];
         
         NSError *error = nil;
         NSPersistentStore *store = [psc addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error];
         if (!store) {
-            ALog(@"Error adding persistent store to coordinator %@\n%@", [error localizedDescription], [error userInfo]);
+            NSLog(@"Error adding persistent store to coordinator %@\n%@", [error localizedDescription], [error userInfo]);
             //Present a user facing error
         }
         
-        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Type"];
-        
-        [moc performBlockAndWait:^{
-            NSError *error = nil;
-            NSInteger count = [[self managedObjectContext] countForFetchRequest:request error:&error];
-            ZAssert(count != NSNotFound || !error, @"Failed to count type: %@\n%@", [error localizedDescription], [error userInfo]);
-            
-            if (count) return;
-            
-            NSArray *types = [[[NSBundle mainBundle] infoDictionary] objectForKey:ppRecipeTypes];
-            
-            for (NSString *recipeType in types) {
-                NSManagedObject *typeMO = [NSEntityDescription insertNewObjectForEntityForName:@"Type" inManagedObjectContext:moc];
-                [typeMO setValue:recipeType forKey:@"name"];
-            }
-            
-            ZAssert([moc save:&error], @"Error saving moc: %@\n%@", [error localizedDescription], [error userInfo]);
-        }];
-        
-        [self contextInitialized];
     });
 }
 
