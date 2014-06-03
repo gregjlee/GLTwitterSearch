@@ -8,9 +8,8 @@
 
 #import "GLSearchTweetsViewController.h"
 #import "GLTwitterApiClient.h"
-#import "GLProcessTweetsOperation.h"
 @interface GLSearchTweetsViewController ()<UIAlertViewDelegate>
-
+@property (nonatomic,strong)NSArray *results;
 @end
 
 @implementation GLSearchTweetsViewController
@@ -19,40 +18,39 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title=@"Search";
+    self.results=@[];
     UIBarButtonItem *searchItem=[[UIBarButtonItem alloc]initWithTitle:@"Search" style:UIBarButtonItemStylePlain target:self action:@selector(handleSearchTapped:)];
     self.navigationItem.rightBarButtonItem=searchItem;
-    // Do any additional setup after loading the view.
+    [self fetchTweetsWithSearchText:@"ios 8"];
 }
 
 -(void)fetchTweetsWithSearchText:(NSString *)searchText{
     [[GLTwitterApiClient sharedClient] fetchTweetsForString:searchText success:^(id result) {
-        [self processTweetData:result];
+        
+        [TSMessage showNotificationInViewController:self title:[NSString stringWithFormat:@"searched %@",searchText] subtitle:nil type:TSMessageNotificationTypeSuccess];
+        self.results=result;
+        [self.tableView reloadData];
     } fail:^{
+        [TSMessage showNotificationInViewController:self title:@"Search Error" subtitle:nil type:TSMessageNotificationTypeError];
+
         NSLog(@"fail search %@",searchText);
     }];
 }
 
--(void)processTweetData:(id)data{
-    GLProcessTweetsOperation *operation= [[GLProcessTweetsOperation alloc] initWithData:data context:self.context completion:^(BOOL success, NSError *error) {
-        
-    }];
-    [[NSOperationQueue mainQueue] addOperation:operation];
-
-}
 
 -(void)handleSearchTapped:(id)sender{
     UIAlertView *alertView = [[UIAlertView alloc]
-                              initWithTitle:@"New Saved Search"
-                              message:@"Please enter a name for this search"
+                              initWithTitle:@"Search Tweets"
+                              message:@"Please enter words to search"
                               delegate:self
                               cancelButtonTitle:@"Cancel"
-                              otherButtonTitles:@"Save", nil];
+                              otherButtonTitles:@"Search", nil];
     [alertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
     
     [alertView show];
 
 }
+
 
 #pragma mark - alert delegate
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -64,6 +62,47 @@
     //validate text
     [self fetchTweetsWithSearchText:searchText];
 }
+
+#pragma mark -
+#pragma mark UITableView Datasource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
+{
+    
+    return self.results.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    GLTweetTableViewCell *cell=(GLTweetTableViewCell *)[self dequeueResuableCellWithClass:[GLTweetTableViewCell class]];
+    [self configureCell:cell atIndexPath:indexPath];
+    return cell;
+}
+
+- (void)configureCell:(UITableViewCell *)cell
+          atIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *tweetData=self.results[indexPath.row];
+    cell.textLabel.text=tweetData[@"text"];
+    cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+    NSDictionary *user= tweetData[@"user"];
+    NSString *urlString=user[@"profile_image_url"];
+    [cell.imageView setImageWithURL:[NSURL URLWithString:urlString] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    
+}
+
+
+#pragma mark -
+#pragma mark UITableView Delegate
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSDictionary *dict=self.results[indexPath.row];
+    Tweet *tweet= [NSEntityDescription insertNewObjectForEntityForName:@"Tweet" inManagedObjectContext:self.context];
+    [tweet setData:dict];
+    [TSMessage showNotificationInViewController:self title:@"Tweet Saved!" subtitle:nil type:TSMessageNotificationTypeSuccess];
+
+}
+
+
 
 
 - (void)didReceiveMemoryWarning

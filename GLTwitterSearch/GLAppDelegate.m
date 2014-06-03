@@ -57,21 +57,25 @@
 
 }
 
-
+#pragma mark - viewcontrollers
 -(UITabBarController *)tabBarController{
     if (_tabBarController) {
         return _tabBarController;
     }
     _tabBarController=[[UITabBarController alloc]init];
     GLSearchTweetsViewController *searchTweetsViewController=[[GLSearchTweetsViewController alloc]initWithContext:self.managedObjectContext];
+    searchTweetsViewController.title=@"Search";
     UINavigationController *searchNav=[[UINavigationController alloc]initWithRootViewController:searchTweetsViewController];
     
     GLSavedTweetsViewController *savedTweetsViewController= [[GLSavedTweetsViewController alloc]initWithContext:self.managedObjectContext];
+    savedTweetsViewController.title=@"Saved";
     UINavigationController *saveNav=[[UINavigationController alloc]initWithRootViewController:savedTweetsViewController];
     _tabBarController.viewControllers=@[searchNav,saveNav];
     return _tabBarController;
     
 }
+
+#pragma mark - save
 
 - (void)saveContext:(BOOL)wait
 {

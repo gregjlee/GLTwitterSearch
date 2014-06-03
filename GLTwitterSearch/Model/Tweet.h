@@ -4,5 +4,5 @@
 +(NSDictionary *)dictionaryWithKeyChanges;
 +(NSDictionary *)dictionaryWithKeysToValueTransforms;
 
-// Custom logic goes here.
+-(void)setData:(NSDictionary *)data;
 @end

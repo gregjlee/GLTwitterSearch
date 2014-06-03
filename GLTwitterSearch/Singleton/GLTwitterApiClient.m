@@ -78,10 +78,21 @@
                   if (responseData) {
                       if (urlResponse.statusCode >= 200 &&
                           urlResponse.statusCode < 300) {
-                          
-                          if (success) {
-                              success(responseData);
+                          NSError *error = nil;
+                          NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:responseData
+                                                                                       options:NSJSONReadingAllowFragments
+                                                                                         error:&error];
+                          id tweetsJSON=jsonResponse[@"statuses"];
+                          if (!tweetsJSON && error) {
+                              fail();
+                              return;
                           }
+                          dispatch_async(dispatch_get_main_queue(), ^{
+                              if (success) {
+                                  success(tweetsJSON);
+                              }
+                          });
+
 
                       }
                       else {

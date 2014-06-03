@@ -4,8 +4,7 @@
 #import "_Tweet.h"
 
 const struct TweetAttributes TweetAttributes = {
-	.createdAt = @"createdAt",
-	.saved = @"saved",
+	.imageURL = @"imageURL",
 	.text = @"text",
 	.tweetID = @"tweetID",
 };
@@ -42,11 +41,6 @@ const struct TweetFetchedProperties TweetFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
-	if ([key isEqualToString:@"savedValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"saved"];
-		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-		return keyPaths;
-	}
 	if ([key isEqualToString:@"tweetIDValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"tweetID"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -59,34 +53,8 @@ const struct TweetFetchedProperties TweetFetchedProperties = {
 
 
 
-@dynamic createdAt;
+@dynamic imageURL;
 
-
-
-
-
-
-@dynamic saved;
-
-
-
-- (BOOL)savedValue {
-	NSNumber *result = [self saved];
-	return [result boolValue];
-}
-
-- (void)setSavedValue:(BOOL)value_ {
-	[self setSaved:[NSNumber numberWithBool:value_]];
-}
-
-- (BOOL)primitiveSavedValue {
-	NSNumber *result = [self primitiveSaved];
-	return [result boolValue];
-}
-
-- (void)setPrimitiveSavedValue:(BOOL)value_ {
-	[self setPrimitiveSaved:[NSNumber numberWithBool:value_]];
-}
 
 
 

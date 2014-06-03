@@ -9,5 +9,6 @@
 #import "GLAbstractTableViewController.h"
 
 @interface GLSavedTweetsViewController : GLAbstractTableViewController
+@property (nonatomic,strong)NSFetchedResultsController *fetchedResultsController;
 
 @end

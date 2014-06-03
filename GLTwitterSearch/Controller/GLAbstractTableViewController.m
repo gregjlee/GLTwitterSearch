@@ -8,7 +8,7 @@
 
 #import "GLAbstractTableViewController.h"
 
-@interface GLAbstractTableViewController ()<NSFetchedResultsControllerDelegate>
+@interface GLAbstractTableViewController ()
 
 @end
 
@@ -41,83 +41,7 @@
     return _tableView;
 }
 
-#pragma mark - Fetched results controller
 
-- (NSFetchedResultsController *)fetchedResultsController
-{
-    if (_fetchedResultsController) {
-        return _fetchedResultsController;
-    }
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Tweet"];
-    [fetchRequest setFetchBatchSize:20];
-    
-    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:TweetAttributes.tweetID ascending:YES]]];
-    _fetchedResultsController=[[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.context sectionNameKeyPath:nil cacheName:@"Master"];
-    _fetchedResultsController.delegate=self;
-
-	NSError *error = nil;
-	NSAssert([_fetchedResultsController performFetch:&error], @"Unresolved error %@\n%@", [error localizedDescription], [error userInfo]);
-    
-    return _fetchedResultsController;
-}
-
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
-{
-    [[self tableView] beginUpdates];
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
-{
-    switch(type) {
-        case NSFetchedResultsChangeInsert:
-            [[self tableView] insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [[self tableView] deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath
-{
-    switch(type) {
-        case NSFetchedResultsChangeInsert:
-            [[self tableView] insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [[self tableView] deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeUpdate:
-            [self configureCell:[[self tableView] cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-            break;
-            
-        case NSFetchedResultsChangeMove:
-            [[self tableView] deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [[self tableView] insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    [[self tableView] endUpdates];
-}
-
-- (void)configureCell:(UITableViewCell *)cell
-          atIndexPath:(NSIndexPath *)indexPath
-{
-    NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-//    [[cell textLabel] setText:[object valueForKey:@"name"]];
-}
 
 
 -(UITableViewCell *)dequeueResuableCellWithClass:(Class)cellClass{
@@ -143,18 +67,14 @@
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
-{
-    
-    return self.fetchedResultsController.fetchedObjects.count;
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 0;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    Tweet *tweet=self.fetchedResultsController.fetchedObjects[indexPath.row];
-    GLTweetTableViewCell *cell=(GLTweetTableViewCell *)[self dequeueResuableCellWithClass:[GLTweetTableViewCell class]];
-    cell.textLabel.text=tweet.text;
-    return cell;
+    return nil;
 }
+
 
 
 - (void)didReceiveMemoryWarning
