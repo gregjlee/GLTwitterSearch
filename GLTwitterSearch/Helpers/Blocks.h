@@ -11,6 +11,7 @@
 typedef void (^ProcessBlock)(BOOL success, NSError *error);
 typedef void (^CompletionBlock)();
 typedef void (^ResponseBlock)(id result);
+typedef void (^MessageBlock)(NSString *Title, NSString *subtitle);
 typedef id (^TransformBlock)(id value);
 
 

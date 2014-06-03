@@ -34,17 +34,21 @@
 }
 
 
-- (void)fetchTweetsForString:(NSString *)search success:(ResponseBlock)success fail:(CompletionBlock)fail{
-
+- (void)fetchTweetsForString:(NSString *)search success:(ResponseBlock)success fail:(MessageBlock)fail{
+    MessageBlock failBlock=^(NSString *title,NSString *subtitle){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (fail) {
+                fail(title,subtitle);
+            }
+        });
+        
+    };
+    
     if (![self userHasAccessToTwitter]) {
+        failBlock(@"Twitter Access Denied", nil);
         return;
     }
-    CompletionBlock failBlock=^{
-        if (fail) {
-            fail();
-        }
-    };
-
+    
     ACAccountType *twitterAccountType =
     [self.accountStore accountTypeWithAccountTypeIdentifier:
      ACAccountTypeIdentifierTwitter];
@@ -54,6 +58,7 @@
      requestAccessToAccountsWithType:twitterAccountType
      options:NULL
      completion:^(BOOL granted, NSError *error) {
+         
          if (granted) {
              //  Step 2:  Create a request
              NSArray *twitterAccounts =
@@ -84,7 +89,7 @@
                                                                                          error:&error];
                           id tweetsJSON=jsonResponse[@"statuses"];
                           if (!tweetsJSON && error) {
-                              fail();
+                              fail(@"Server Error",@"Try again later");
                               return;
                           }
                           dispatch_async(dispatch_get_main_queue(), ^{
@@ -92,22 +97,26 @@
                                   success(tweetsJSON);
                               }
                           });
-
-
+                          
+                          
                       }
                       else {
-                          failBlock();
+                          
+                          failBlock(@"Server Error", @"Try again later");
                           // The server did not respond ... were we rate-limited?
-                          NSLog(@"The response status code is %d",
-                                urlResponse.statusCode);
+                          NSLog(@"The response status code is %ld",
+                                (long)urlResponse.statusCode);
                       }
+                  } else{
+                      failBlock(@"Server Error", @"Try again later");
                   }
               }];
          }
+         
          else {
              // Access was not granted, or an error occurred
              NSLog(@"%@", [error localizedDescription]);
-             failBlock();
+             failBlock(@"Twitter Access Denied", nil);
          }
      }];
 }

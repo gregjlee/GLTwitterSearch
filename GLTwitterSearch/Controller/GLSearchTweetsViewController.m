@@ -27,12 +27,13 @@
 -(void)fetchTweetsWithSearchText:(NSString *)searchText{
     [[GLTwitterApiClient sharedClient] fetchTweetsForString:searchText success:^(id result) {
         
-        [TSMessage showNotificationInViewController:self title:[NSString stringWithFormat:@"searched %@",searchText] subtitle:nil type:TSMessageNotificationTypeSuccess];
+        [TSMessage showNotificationInViewController:self title:[NSString stringWithFormat:@"searched %@",searchText] subtitle:nil type:TSMessageNotificationTypeSuccess duration:TSMessageNotificationDurationAutomatic canBeDismissedByUser:YES];
+
         self.results=result;
         [self.tableView reloadData];
-    } fail:^{
-        [TSMessage showNotificationInViewController:self title:@"Search Error" subtitle:nil type:TSMessageNotificationTypeError];
-
+    } fail:^(NSString *title, NSString *subtitle){
+        
+        [TSMessage showNotificationInViewController:self title:title subtitle:subtitle type:TSMessageNotificationTypeError duration:TSMessageNotificationDurationEndless canBeDismissedByUser:YES];
         NSLog(@"fail search %@",searchText);
     }];
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F9EAFF0D-A879-49F8-ADD2-82DF29A7F3F5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>GLTwitterSearch</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>09E9B9DB-F02D-4E9A-9EC7-0C280C7BC9FC</key>
+		<string>https://github.com/gregjlee/GLTwitterSearch.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>GLTwitterSearch.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>09E9B9DB-F02D-4E9A-9EC7-0C280C7BC9FC</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/gregjlee/GLTwitterSearch.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>09E9B9DB-F02D-4E9A-9EC7-0C280C7BC9FC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>09E9B9DB-F02D-4E9A-9EC7-0C280C7BC9FC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>GLTwitterSearch</string>
+		</dict>
+	</array>
+</dict>
+</plist>

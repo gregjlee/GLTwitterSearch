@@ -10,6 +10,6 @@
 #import "Blocks.h"
 @interface GLTwitterApiClient : NSObject
 +(GLTwitterApiClient *)sharedClient;
-- (void)fetchTweetsForString:(NSString *)search success:(ResponseBlock)success fail:(CompletionBlock)fail;
+- (void)fetchTweetsForString:(NSString *)search success:(ResponseBlock)success fail:(MessageBlock)fail;
 
 @end
